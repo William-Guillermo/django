@@ -18,8 +18,8 @@ from django.urls import path
 from proyecto1.views import saludo,despedida,fecha,edad_futura
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('saludo/', saludo),
+    path('admin/',admin.site.urls),
+    path('saludo/',saludo),
     path('despedida/',despedida),
     path('fecha/',fecha),
     path('edades/<int:edad>/<int:agnio>',edad_futura)
