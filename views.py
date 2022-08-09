@@ -21,12 +21,14 @@ def saludo(request):
     persona2=Persona("Miriam","Davila")
     nombre = "William"
     apellido = "Guillermo"
+    #temas=["Plantillas","vistas","modelos","BSE de datos","Apis","MVT"]
+    temas=[]
     ahora = now=datetime.datetime.now()
     doc_externo=open("/home/wguillermo/Escritorio/pildoras/proyecto1/proyecto1/saludo.html")
     plt = Template(doc_externo.read())
     doc_externo.close
     #ctx = Context({"nombre_persona":nombre,"nombre_apellido":apellido,"fecha_actual":ahora})
-    ctx = Context({"nombre_persona":persona2.nombre,"nombre_apellido":persona2.apellido,"fecha_actual":ahora})
+    ctx = Context({"nombre_persona":persona2.nombre,"nombre_apellido":persona2.apellido,"fecha_actual":ahora,"clases":temas})
     documento = plt.render(ctx)
     return HttpResponse(documento)
 
