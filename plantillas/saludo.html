@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+   <meta charset="iso-8559-1" />
+</head>
+<body>
+   {# PLantillas incrustadas #}
+   {% include "superior/barra.html" %}
+ <h1 style="color: blue;">
+    Hola esta es mi primer plantilla con modelo Vista Template
+ </h1> 
+ {% if persona == 'William Guillermo' %}
+   <h1>El profesor titula es {{persona}}</h1>
+ {% endif %}
+
+{# las variables son recibidas desde el contexto de las vistas como clave de diccionario Estamos es un comentario no se visauliza en la pagina #}
+ <p>El nombre de la persona es {{nombre_persona.upper}} {{nombre_apellido.upper}}</p>
+ <p>Estamos viendo el tema de las plantillas y Django al Día {{fecha_actual}}</p>  
+ 
+ {% comment %}
+
+ Estos son comentarios en varias lineas comment que se abre comment que se cierra 
+
+ {% endcomment %}
+ <p><strong>TEMAS EN PYTHON CURSO</strong></p>
+ <ul>
+   {% if clases %}
+      {% for lasclases in clases %}
+      <li>{{lasclases}}</li>
+   {% endfor %}
+   {% else %}
+      <p>No hay Temas que mostrar</p>
+   {% endif %} 
+ </ul>
+</body>
+</html>

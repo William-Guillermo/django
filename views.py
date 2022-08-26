@@ -4,6 +4,7 @@ from django.template import Template,Context
 from django.http import HttpResponse
 import datetime
 from django.template import loader # modulo cargador de plantillas
+from django.shortcuts import render
 
 """cargar
 se crea un contsructor para la clase Persona  para representar los datos de la persona 2 y hacer el ejemplo con POO
@@ -28,11 +29,11 @@ def saludo(request):
     # doc_externo=open("/home/wguillermo/Escritorio/pildoras/proyecto1/proyecto1/saludo.html")
     # plt = Template(doc_externo.read())
     # doc_externo.close
-    doc_externo = loader.get_template('saludo.html')
+    #doc_externo = loader.get_template('saludo.html')
     #ctx = Context({"nombre_persona":nombre,"nombre_apellido":apellido,"fecha_actual":ahora})
     #ctx = Context({"nombre_persona":persona2.nombre,"nombre_apellido":persona2.apellido,"fecha_actual":ahora,"clases":temas,"persona":nombre})
-    documento = doc_externo.render({"nombre_persona":persona2.nombre,"nombre_apellido":persona2.apellido,"fecha_actual":ahora,"clases":temas,"persona":nombre})
-    return HttpResponse(documento)
+    #documento = doc_externo.render()
+    return render(request,'saludo.html',{"nombre_persona":persona2.nombre,"nombre_apellido":persona2.apellido,"fecha_actual":ahora,"clases":temas,"persona":nombre})
 
 def despedida(request):
 
@@ -56,5 +57,15 @@ def edad_futura(request,edad,agnio):
     futura = edad+periodo
     documento="<html><body><h1> En el Año %s tendras %s</body></html>" %(agnio,futura)
     return HttpResponse(documento)
+
+def cursoC(request):
+
+    now=datetime.datetime.now()
+    return render(request,'cursoC.html',{'damefecha':now})
+
+def cursojava(request):
+    now=datetime.datetime.now()
+    return render(request,'cursojava.html',{'damefecha':now})
+
 
 
